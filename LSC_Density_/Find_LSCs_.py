@@ -72,10 +72,11 @@ def run_script():
     # Config setup
     # TODO - Double check path works on Windows 
     plugin_wd = IJ.getDirectory('current') + 'scripts/'
+    plugin_wd = plugin_wd.replace('\\', '/')
     IJ.log(plugin_wd)
     config = SafeConfigParser()
     config.read(plugin_wd + 'plugin_config.ini')
-    python_path = config.get('path_info','python_path')
+    python_path = config.get('path_info','python_path').replace('\\', '/')
     logging_bool = config.getboolean('path_info','logging')
     temp_folder = plugin_wd + "temp/"
 
